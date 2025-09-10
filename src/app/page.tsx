@@ -1,103 +1,173 @@
-import Image from "next/image";
+"use client";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="home">
+      <section className="hero">
+        <h1>Bienvenido a tu dApp</h1>
+        <p>
+          Sube tu obra, obten un CID de IPFS, y notariza la evidencia con Chopin
+          sobre Celestia.
+        </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+        <div className="cta">
+          <a className="btn btn-primary" href="/musecure">
+            Ir a MuSecure
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          <a className="btn btn-ghost" href="/auth-test">
+            Probar autenticación
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      <section className="grid">
+        <article className="card">
+          <h3>MuSecure</h3>
+          <p>Registro y verificación de obras (audio) con hash y CID.</p>
+          <a className="btn btn-secondary" href="/musecure">
+            Abrir
+          </a>
+        </article>
+
+        <article className="card">
+          <h3>Historial</h3>
+          <p>Lista de registros notarizados y accesos rápidos a IPFS.</p>
+          <a className="btn" href="/musecure/history">
+            Ver historial
+          </a>
+        </article>
+
+        <article className="card">
+          <h3>Auth Test</h3>
+          <p>Comprobación de sesión y wallet con Chopin.</p>
+          <a className="btn" href="/auth-test">
+            Probar
+          </a>
+        </article>
+      </section>
+
+      <style jsx>{`
+        .home {
+          padding: 32px 20px;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .hero {
+          background: linear-gradient(180deg, #0ea5e9, #22d3ee);
+          color: white;
+          padding: 28px;
+          border-radius: 18px;
+          box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);
+          margin-bottom: 28px;
+        }
+        .hero h1 {
+          margin: 0 0 8px 0;
+          font-size: 28px;
+          line-height: 1.15;
+        }
+        .hero p {
+          margin: 0 0 16px 0;
+          opacity: 0.95;
+        }
+        .cta {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 16px;
+        }
+        .card {
+          background: #fff;
+          border: 1px solid #eee;
+          border-radius: 16px;
+          padding: 18px;
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+        .card h3 {
+          margin: 0 0 6px 0;
+        }
+
+        .btn {
+          display: inline-flex;
+          gap: 8px;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 14px;
+          border-radius: 12px;
+          border: 1px solid #e5e7eb;
+          background: #f8fafc;
+          color: #111827;
+          text-decoration: none;
+          font-weight: 600;
+          transition: transform 0.05s ease, box-shadow 0.2s ease,
+            background 0.2s ease;
+        }
+        .btn:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+        .btn:active {
+          transform: translateY(0);
+        }
+        .btn-primary {
+          background: #111827;
+          color: #fff;
+          border-color: #111827;
+        }
+        .btn-primary:hover {
+          background: #0b1220;
+        }
+        .btn-secondary {
+          background: #0ea5e9;
+          color: white;
+          border-color: #0ea5e9;
+        }
+        .btn-secondary:hover {
+          background: #0284c7;
+        }
+        .btn-ghost {
+          background: transparent;
+          color: #fff;
+          border-color: rgba(255, 255, 255, 0.6);
+        }
+        .btn-ghost:hover {
+          background: rgba(255, 255, 255, 0.12);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .card {
+            background: #0b1220;
+            border-color: #111827;
+          }
+          .home {
+            color: #e5e7eb;
+          }
+          .btn {
+            background: #0b1220;
+            color: #e5e7eb;
+            border-color: #1f2937;
+          }
+          .btn:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+          }
+          .btn-primary {
+            background: #e5e7eb;
+            color: #0b1220;
+            border-color: #e5e7eb;
+          }
+          .btn-primary:hover {
+            background: #fff;
+          }
+          .btn-secondary {
+            background: #22d3ee;
+            color: #0b1220;
+            border-color: #22d3ee;
+          }
+        }
+      `}</style>
+    </main>
   );
 }

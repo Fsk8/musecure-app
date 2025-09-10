@@ -3,25 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "db:migrate": "tsx src/app/scripts/migrate.ts",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "dev:chopin": "chopd 4000 3000",
+    "db:seed": "cross-env IS_SEEDING=true tsx src/app/scripts/seed.ts",
+    "db:reset": "shx rm -f src/app/lib/app.db && npm run db:migrate && npm run db:seed",
+    "postinstall": "shx rm -f src/app/lib/app.db && npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
+    "@chopinframework/next": "^1.1.8",
+    "@chopinframework/react": "^0.1.1",
+    "@lighthouse-web3/sdk": "^0.4.1",
+    "@unimusic/chromaprint": "^0.1.4",
+    "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.2"
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "cross-env": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
-    "@eslint/eslintrc": "^3"
+    "shx": "^0.4.0",
+    "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
   }
 }
